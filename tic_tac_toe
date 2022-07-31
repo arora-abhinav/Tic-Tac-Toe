@@ -1,0 +1,127 @@
+def mainFunc():
+    gameOver = False
+    Counter = 9 
+    correctCoordinates = False
+    Taken = False
+    gridOfNumbers = [["", "", ""],
+        ["", "", ""],
+        ["", "", ""]]
+    correctLetter = False
+    while gameOver == False:
+        print("Here is the current grid:")
+        for row in gridOfNumbers:
+            print(row)
+        correctLetter = False
+        while correctLetter == False:
+            print("Please enter X. This can be capital or small")
+            answer = input("")
+            loweredAnswer = answer.lower()
+            if loweredAnswer == "x":
+                correctLetter = True
+        Taken = False
+        while Taken == False:
+            correctCoordinates = False
+            while correctCoordinates == False:
+                print("Where do you want your coordinates to be?")
+                print("Here is the mapping of coordinates:")
+                print("X-Coordinate: 1, 2, 3. This denotes the first, second and third row respectiively")
+                print("Y-Coordinate: 1, 2, 3. This denotes the first, second and third column respectively.")
+                X_coordinate = int(input("X-Coordinate: "))
+                Y_coordinate = int(input("Y-Coordinate: "))
+                viableCooridnates = [1,2,3]
+                for value in viableCooridnates:
+                    if X_coordinate in viableCooridnates and Y_coordinate in viableCooridnates:
+                        correctCoordinates = True
+
+            if gridOfNumbers[X_coordinate - 1][Y_coordinate - 1] == "":
+                gridOfNumbers[X_coordinate - 1][Y_coordinate -1] = "X"
+                Taken = True
+            else:
+                print("I'm sorry, the position has already been taken.")
+
+        for row in gridOfNumbers:
+            print(row)
+
+        if gridOfNumbers[0][0] == "X" and gridOfNumbers[1][1] == "X" and gridOfNumbers[2][2] == "X":
+            gameOver = True
+            print("X wins!")
+        elif gridOfNumbers[0][2] == "X" and gridOfNumbers[1][1] == "X" and gridOfNumbers[2][0] == "X":
+            gameOver = True
+            print("X wins!")
+        elif gridOfNumbers[0][1] == "X" and gridOfNumbers[1][1] == "X" and gridOfNumbers[2][1] == "X":
+            gameOver = True
+            print("X wins!")
+        elif gridOfNumbers[0][0] == "X" and gridOfNumbers[1][0] == "X" and gridOfNumbers[2][0] == "X":
+            gameOver = True
+            print("X wins!")
+        elif gridOfNumbers[0][2] == "X" and gridOfNumbers[1][2] == "X" and gridOfNumbers[2][2] == "X":
+            gameOver = True
+            print("X wins!")     
+
+        for row in gridOfNumbers:
+            if row.count("X") == 3:
+                print("X wins!")
+                gameOver = True
+        
+        if gameOver == True:
+            break
+
+        correctLetter = False
+        while correctLetter == False:
+            print("Please enter O. This can be capital or small")
+            answer = input("")
+            loweredAnswer = answer.lower()
+            if loweredAnswer == "o":
+                correctLetter = True
+        Taken = False
+        while Taken == False:
+            correctCoordinates = False
+            while correctCoordinates == False:
+                print("Where do you want your coordinates to be?")
+                print("Here is the mapping of coordinates:")
+                print("X-Coordinate: 1, 2, 3. This denotes the first, second and third row respectiively")
+                print("Y-Coordinate: 1, 2, 3. This denotes the first, second and third column respectively.")
+                X_coordinate = int(input("X-Coordinate: "))
+                Y_coordinate = int(input("Y-Coordinate: "))
+                viableCooridnates = [1,2,3]
+                for value in viableCooridnates:
+                    if X_coordinate in viableCooridnates and Y_coordinate in viableCooridnates:
+                        correctCoordinates = True
+    
+            if loweredAnswer == "o" and gridOfNumbers[X_coordinate - 1][Y_coordinate - 1] == "":
+                gridOfNumbers[X_coordinate - 1][Y_coordinate -1] = "O"
+                Taken = True
+            else:
+                print("I'm sorry, the position has already been taken.")
+
+        for row in gridOfNumbers:
+            print(row)
+        
+        if gridOfNumbers[0][0] == "O" and gridOfNumbers[1][1] == "O" and gridOfNumbers[2][2] == "O":
+            gameOver = True
+            print("O wins!")
+        elif gridOfNumbers[0][2] == "O" and gridOfNumbers[1][1] == "O" and gridOfNumbers[2][0] == "O":
+            gameOver = True
+            print("O wins!")
+        elif gridOfNumbers[0][1] == "O" and gridOfNumbers[1][1] == "O" and gridOfNumbers[2][1] == "O":
+            gameOver = True
+            print("O wins!")
+        elif gridOfNumbers[0][0] == "O" and gridOfNumbers[1][0] == "O" and gridOfNumbers[2][0] == "O":
+            gameOver = True
+            print("O wins!")
+        elif gridOfNumbers[0][2] == "O" and gridOfNumbers[1][2] == "O" and gridOfNumbers[2][2] == "O":
+            gameOver = True
+            print("O wins!")     
+
+        for row in gridOfNumbers:
+            if row.count("O") == 3:
+                print("O wins!")
+                gameOver = True
+        
+        if gameOver == True:
+            break
+
+        Counter -= 1
+        if Counter == 0:
+            gameOver = True
+mainFunc()
